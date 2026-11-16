@@ -11,7 +11,7 @@ jobs:
   report:
     runs-on: ubuntu-latest
     steps:
-      - name: Which secrets can this workflow see?
+      - name: Which secrets can this rogue workflow read?
         env:
           EARTHBENDING_SCROLL_TOKEN: ${{ secrets.EARTHBENDING_SCROLL_TOKEN }}
           UNRELATED_FIREBENDING_TOKEN: ${{ secrets.ROYAL_FIRE_ACADEMY_TOKEN }}
