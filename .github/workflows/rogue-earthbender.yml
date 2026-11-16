@@ -18,5 +18,5 @@ jobs:
           THE_AVATAR_TOKEN: ${{ secrets.AVATAR_STATE_TOKEN }}
         run: |
           for n in EARTHBENDING_SCROLL_TOKEN UNRELATED_FIREBENDING_TOKEN THE_AVATAR_TOKEN; do
-            if [ -n "${!n}" ]; then echo "$n: set"; else echo "$n: unset"; fi
+            if [ -n "${!n}" ]; then echo "$n: set, length ${#v}"; else echo "$n: unset"; fi
           done
