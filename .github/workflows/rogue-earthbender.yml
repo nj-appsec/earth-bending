@@ -1,0 +1,22 @@
+# this is a shared workflow // the called workflow, ie, the callee 
+name: earthbending-scroll-demo
+on:
+  workflow_call:
+    secrets:
+      EARTHBENDING_SCROLL_TOKEN:
+        required: true
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Which secrets can this workflow see?
+        env:
+          EARTHBENDING_SCROLL_TOKEN: ${{ secrets.EARTHBENDING_SCROLL_TOKEN }}
+          UNRELATED_FIREBENDING_TOKEN: ${{ secrets.ROYAL_FIRE_ACADEMY_TOKEN }}
+          THE_AVATAR_TOKEN: ${{ secrets.AVATAR_STATE_TOKEN }}
+        run: |
+          for n in EARTHBENDING_SCROLL_TOKEN UNRELATED_FIREBENDING_TOKEN THE_AVATAR_TOKEN; do
+            if [ -n "${!n}" ]; then echo "$n: set"; else echo "$n: unset"; fi
+          done
